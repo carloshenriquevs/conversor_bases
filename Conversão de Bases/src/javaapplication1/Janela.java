@@ -152,7 +152,36 @@ public class Janela extends javax.swing.JDialog {
                 s += v * Math.pow(2, entrada.length() - 1 - i);              
             }
             textSaida.setText(String.valueOf(s));
-        } 
+        }
+        else if ( boxEntrada.getSelectedIndex() == 1 
+                && boxSaida.getSelectedIndex() == 2 ) {    
+        
+        int valor = Integer.parseInt(textEntrada.getText());
+        char[] hexa = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        int resto;
+        StringBuilder s = new StringBuilder();
+
+            while (valor > 0) {
+               resto = valor % 16;
+               valor /= 16;
+               s.insert(0, hexa[resto]);
+            }
+               textSaida.setText(String.valueOf(s));
+        }
+        else if ( boxEntrada.getSelectedIndex() == 2 
+                && boxSaida.getSelectedIndex() == 1 ) {
+            
+        String entrada = textEntrada.getText();
+        int valor = 0;
+        int p;
+        char[] hexa = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+ 
+            for (int i = 0; i < entrada.length(); i++) {
+               p = Character.getNumericValue(entrada.charAt(i));
+               valor += p * Math.pow(16, entrada.length() - 1 - i);
+            }
+        textSaida.setText(String.valueOf(valor));
+        }  
     }//GEN-LAST:event_converterActionPerformed
        
     /**
