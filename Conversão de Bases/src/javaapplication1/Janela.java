@@ -181,7 +181,36 @@ public class Janela extends javax.swing.JDialog {
                valor += p * Math.pow(16, entrada.length() - 1 - i);
             }
         textSaida.setText(String.valueOf(valor));
-        }  
+        }
+        else if ( boxEntrada.getSelectedIndex() == 2 
+                && boxSaida.getSelectedIndex() == 1 ) {
+        
+   public static String converteBinarioParaHexadecimal(String binario) {
+   char[] hexa = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+   StringBuilder sb = new StringBuilder();
+   int posicaoInicial = 0;
+   int posicaoFinal = 0;
+   char caractereEncontrado = '-';
+ 
+   posicaoInicial = binario.length();
+   posicaoFinal = posicaoInicial;
+ 
+   while (posicaoInicial > 0) {
+      
+      posicaoInicial = ((posicaoInicial - 4) >= 0) ? posicaoInicial - 4 : 0;
+ 
+      caractereEncontrado = hexa[converteBinarioParaDecimal(binario.substring(posicaoInicial, posicaoFinal))];
+      
+      sb.insert(0, caractereEncontrado);
+ 
+      posicaoFinal = posicaoInicial;
+   }
+ 
+   return sb.toString();
+}
+            
+        
+        }       
     }//GEN-LAST:event_converterActionPerformed
        
     /**
